@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="gestion_sports" />
+        <module name="olympic_service" />
+        <module name="gestion_sites" />
+        <module name="Event_Scheduling_Service" />
+        <module name="gestion_users" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Olympic_Service" target="19" />
+      <module name="Sites_Management_Service" target="19" />
+      <module name="Sports_Management_Service" target="19" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Event_Scheduling_Service" options="-parameters" />
+      <module name="gestion_sites" options="-parameters" />
+      <module name="gestion_sports" options="-parameters" />
+      <module name="gestion_users" options="-parameters" />
+      <module name="olympic_service" options="-parameters" />
+    </option>
+  </component>
+</project>

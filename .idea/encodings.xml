@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Event_Scheduling_Service/dauphine.fr.microservices.gestion_event/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Event_Scheduling_Service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Event_Scheduling_Service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Olympic_Service/dauphine.fr.microservices.olympic_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Olympic_Service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Olympic_Service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Sites_Management_Service/dauphine.fr.microservices.gestion_sites/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Sites_Management_Service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Sites_Management_Service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Sports_Management_Service/dauphine.fr.microservices.gestion_sports/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Sports_Management_Service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Sports_Management_Service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/User_Planning_Service/dauphine.fr.microservices.gestion_users/src/main/java" charset="UTF-8" />
+  </component>
+</project>

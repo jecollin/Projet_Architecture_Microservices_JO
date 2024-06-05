@@ -22,7 +22,7 @@ Ce projet consiste en une application de gestion des événements sportifs des J
 ### Étapes de compilation
 1. Clonez le repository :
     ```sh
-    git clone https://github.com/votre-repository.git
+    git clone https://github.com/jecollin/Projet_Architecture_Microservices_JO.git
     cd votre-repository
     ```
 

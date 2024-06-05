@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Event_Scheduling_Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Event_Scheduling_Service/dauphine.fr.microservices.gestion_event/pom.xml" />
+        <option value="$PROJECT_DIR$/Olympic_Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Olympic_Service/dauphine.fr.microservices.olympic_service/pom.xml" />
+        <option value="$PROJECT_DIR$/Sites_Management_Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Sites_Management_Service/dauphine.fr.microservices.gestion_sites/pom.xml" />
+        <option value="$PROJECT_DIR$/Sports_Management_Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Sports_Management_Service/dauphine.fr.microservices.gestion_sports/pom.xml" />
+        <option value="$PROJECT_DIR$/User_Planning_Service/dauphine.fr.microservices.gestion_users/pom.xml" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="19" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
