@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  olympic_service:
+    image: olympic_service:latest
+    build:
+      context: ./Olympic_Service
+    ports:
+      - "8080:8080"
+    networks:
+      - olympic-network
+    depends_on:
+      - db
+
+  event_scheduling_service:
+    image: event_scheduling_service:latest
+    build:
+      context: ./Event_Scheduling_Service
+    ports:
+      - "8081:8081"
+    networks:
+      - olympic-network
+    depends_on:
+      - db
+
+  sites_management_service:
+    image: sites_management_service:latest
+    build:
+      context: ./Sites_Management_Service
+    ports:
+      - "8082:8082"
+    networks:
+      - olympic-network
+    depends_on:
+      - db
+
+  sport_management_service:
+    image: sport_management_service:latest
+    build:
+      context: ./Sport_Management_Service
+    ports:
+      - "8083:8083"
+    networks:
+      - olympic-network
+    depends_on:
+      - db
+
+  user_planning_service:
+    image: user_planning_service:latest
+    build:
+      context: ./User_Planning_Service
+    ports:
+      - "8084:8084"
+    networks:
+      - olympic-network
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'olympicdb'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'rootpassword'
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - olympic-network
+
+networks:
+  olympic-network:
+
+volumes:
+  db-data:

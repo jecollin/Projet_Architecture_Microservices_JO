@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - backend
+
+  gestion_events:
+    build: .
+    container_name: gestion_events
+    depends_on:
+      - mysql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/db
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=root
+    ports:
+      - "8301:8301"
+    networks:
+      - backend
+
+volumes:
+  mysql-data:
+
+networks:
+  backend:

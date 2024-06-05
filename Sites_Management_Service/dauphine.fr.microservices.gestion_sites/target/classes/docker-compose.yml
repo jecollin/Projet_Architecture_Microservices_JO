@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  gestion_sites:
+    image: gestion_sites:latest
+    ports:
+      - "8301:8301"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/db
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: root
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+      EUREKA_INSTANCE_HOSTNAME: gestion_sites
+    depends_on:
+      - db
+      - eureka-server
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'root'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+
+  eureka-server:
+    image: eureka-server:latest
+    ports:
+      - "8761:8761"
+
+volumes:
+  db-data:

@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  gestion_sites:
+    image: gestion_sites:latest
+    ports:
+      - "8301:8301"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/db
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: root
+      OLYMPIC_SERVICE_URL: http://olympic-service:8302  # Assurez-vous que cela pointe vers le bon service
+    depends_on:
+      - db
+      - olympic-service
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'root'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+
+  olympic-service:
+    image: olympic_service:latest
+    ports:
+      - "8302:8302"
+
+volumes:
+  db-data:
