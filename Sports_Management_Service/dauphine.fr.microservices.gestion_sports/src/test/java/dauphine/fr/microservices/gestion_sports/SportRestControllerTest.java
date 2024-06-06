@@ -5,6 +5,7 @@ import dauphine.fr.microservices.gestion_sports.repositories.SportRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +19,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -50,7 +53,7 @@ public class SportRestControllerTest {
 	}
 
 	@Test
-	public void getAllSports_ShouldReturnAllSports() throws Exception {
+	public void getAllSports() throws Exception {
 		mockMvc.perform(get("/sports")
 						.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
@@ -80,14 +83,31 @@ public class SportRestControllerTest {
 
 	@Test
 	public void createSport_ShouldReturnCreated() throws Exception {
-		// Mock the behavior of save to return the sport
-		given(sportRepository.save(testSport)).willReturn(testSport);
+		// Create a new Sport object with no ID
+		Sport newSport = new Sport();
+		newSport.setName("Basketball");
+
+		// Capture the argument passed to save method
+		ArgumentCaptor<Sport> sportArgumentCaptor = ArgumentCaptor.forClass(Sport.class);
+
+		// Mock the save method to return a Sport object with an ID
+		Sport savedSport = new Sport(UUID.randomUUID(), "Basketball");
+		given(sportRepository.save(sportArgumentCaptor.capture())).willReturn(savedSport);
 
 		mockMvc.perform(post("/sports")
-						.param("name", "Football")
+						.param("name", "Basketball")
 						.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isCreated())
-				.andExpect(header().string("Location", "http://localhost/sports/" + testSport.getId()));
+				.andExpect(header().string("Location", "http://localhost/sports/" + savedSport.getId().toString()));
+
+		// Verify the save method was called
+		verify(sportRepository).save(sportArgumentCaptor.capture());
+
+		// Get the captured argument
+		Sport capturedSport = sportArgumentCaptor.getValue();
+
+		// Verify the captured sport object
+		assertThat(capturedSport.getName()).isEqualTo("Basketball");
 	}
 
 	@Test

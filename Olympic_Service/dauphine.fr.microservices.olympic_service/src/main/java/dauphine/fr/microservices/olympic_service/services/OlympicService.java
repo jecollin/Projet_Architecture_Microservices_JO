@@ -1,13 +1,13 @@
 package dauphine.fr.microservices.olympic_service.services;
 
+import dauphine.fr.microservices.gestion_event.entities.Event;
+import dauphine.fr.microservices.gestion_sites.entities.Site;
 import dauphine.fr.microservices.gestion_sports.entities.Sport;
 import dauphine.fr.microservices.gestion_users.entities.Planning;
 import dauphine.fr.microservices.olympic_service.clients.EventServiceClient;
 import dauphine.fr.microservices.olympic_service.clients.SiteServiceClient;
 import dauphine.fr.microservices.olympic_service.clients.SportServiceClient;
 import dauphine.fr.microservices.olympic_service.clients.UserPlanningServiceClient;
-import jdk.internal.event.Event;
-import jdk.vm.ci.code.site.Site;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

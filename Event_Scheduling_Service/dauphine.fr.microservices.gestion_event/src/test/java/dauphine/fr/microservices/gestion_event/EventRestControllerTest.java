@@ -3,7 +3,7 @@ package dauphine.fr.microservices.gestion_event;
 import dauphine.fr.microservices.gestion_event.controllers.EventRestController;
 import dauphine.fr.microservices.gestion_event.entities.Event;
 import dauphine.fr.microservices.gestion_event.repositories.EventRepository;
-import org.junit.jupiter.api.BeforeEach;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -11,6 +11,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -38,7 +41,7 @@ public class EventRestControllerTest {
 	private UUID id1;
 	private UUID id2;
 
-	@BeforeEach
+	@BeforeMethod
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
 
@@ -77,6 +80,9 @@ public class EventRestControllerTest {
 
 	@Test
 	public void testCreateEvent() {
+		MockHttpServletRequest request = new MockHttpServletRequest();
+		RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
+
 		Event newEvent = new Event("New Event", 3, LocalDate.now().plusDays(2), LocalTime.now(), LocalTime.now().plusHours(1), 3);
 		given(eventRepository.save(newEvent)).willReturn(newEvent);
 

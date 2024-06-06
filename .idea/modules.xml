@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Projet_Architecture_Microservices_JO.iml" filepath="$PROJECT_DIR$/.idea/Projet_Architecture_Microservices_JO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Olympic_Service/dauphine.fr.microservices.olympic_service/dauphine.fr.microservices.olympic_service.iml" filepath="$PROJECT_DIR$/Olympic_Service/dauphine.fr.microservices.olympic_service/dauphine.fr.microservices.olympic_service.iml" />
     </modules>
   </component>
 </project>

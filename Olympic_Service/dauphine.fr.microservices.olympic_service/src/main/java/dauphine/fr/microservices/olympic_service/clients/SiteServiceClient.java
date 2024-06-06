@@ -1,6 +1,6 @@
 package dauphine.fr.microservices.olympic_service.clients;
 
-import jdk.vm.ci.code.site.Site;
+import dauphine.fr.microservices.gestion_sites.entities.Site;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

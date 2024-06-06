@@ -1,10 +1,10 @@
 package dauphine.fr.microservices.olympic_service.controllers;
 
+import dauphine.fr.microservices.gestion_event.entities.Event;
+import dauphine.fr.microservices.gestion_sites.entities.Site;
 import dauphine.fr.microservices.gestion_sports.entities.Sport;
 import dauphine.fr.microservices.gestion_users.entities.Planning;
 import dauphine.fr.microservices.olympic_service.services.OlympicService;
-import jdk.internal.event.Event;
-import jdk.vm.ci.code.site.Site;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

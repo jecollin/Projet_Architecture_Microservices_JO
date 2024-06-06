@@ -1,6 +1,7 @@
 package dauphine.fr.microservices.olympic_service.clients;
 
-import jdk.internal.event.Event;
+
+import dauphine.fr.microservices.gestion_event.entities.Event;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

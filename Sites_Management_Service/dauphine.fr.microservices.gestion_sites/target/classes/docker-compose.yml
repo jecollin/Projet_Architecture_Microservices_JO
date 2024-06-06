@@ -8,11 +8,10 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/db
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: root
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
-      EUREKA_INSTANCE_HOSTNAME: gestion_sites
+      OLYMPIC_SERVICE_URL: http://olympic-service:8302  # Assurez-vous que cela pointe vers le bon service
     depends_on:
       - db
-      - eureka-server
+      - olympic-service
 
   db:
     image: mysql:5.7
@@ -26,10 +25,10 @@ services:
     volumes:
       - db-data:/var/lib/mysql
 
-  eureka-server:
-    image: eureka-server:latest
+  olympic-service:
+    image: olympic_service:latest
     ports:
-      - "8761:8761"
+      - "8302:8302"
 
 volumes:
   db-data:

@@ -21,7 +21,7 @@ public class EventRestController {
     private EventRepository repo;
 
     // Get all events
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<List<Event>> getAllEvents() {
         List<Event> events = repo.findAll();
         if (events.isEmpty()) {

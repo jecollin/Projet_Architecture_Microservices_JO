@@ -87,7 +87,7 @@
 		<!-- Event Scheduling Service Dependency -->
 		<dependency>
 			<groupId>dauphine.fr.microservices.gestion_transactions</groupId>
-			<artifactId>Event_Scheduling_Service</artifactId>
+			<artifactId>gestion_event</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
