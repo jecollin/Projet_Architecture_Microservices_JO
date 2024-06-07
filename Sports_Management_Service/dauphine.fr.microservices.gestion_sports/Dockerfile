@@ -1,14 +1,17 @@
-# Use an official OpenJDK runtime as a parent image
-FROM openjdk:8-jdk-alpine
-
-# Set the working directory to /app
+# Use a multi-stage build to minimize the final image size
+# Stage 1: Build the application
+FROM maven:3.6.3-openjdk-8 as builder
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copy the JAR file into the container at /app
-COPY target/gestion_sports.jar ./gestion_sports.jar
-
-# Make port 8302 available to the world outside this container
-EXPOSE 8302
-
-# Run the JAR file
+# Stage 2: Create the runtime image
+FROM openjdk:8-jre-slim
+WORKDIR /app
+COPY --from=builder /app/target/gestion_sports.jar gestion_sports.jar
+EXPOSE 8083
 ENTRYPOINT ["java", "-jar", "gestion_sports.jar"]
+
+
+

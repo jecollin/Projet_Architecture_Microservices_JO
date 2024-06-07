@@ -10,5 +10,5 @@ RUN mvn clean package -DskipTests
 FROM openjdk:8-jre-slim
 WORKDIR /app
 COPY --from=builder /app/target/gestion_events.jar gestion_events.jar
-EXPOSE 8301
+EXPOSE 8081
 ENTRYPOINT ["java", "-jar", "gestion_events.jar"]

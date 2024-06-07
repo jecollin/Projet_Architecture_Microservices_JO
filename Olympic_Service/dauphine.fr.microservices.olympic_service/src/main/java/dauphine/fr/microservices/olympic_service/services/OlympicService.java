@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class OlympicService {
@@ -47,12 +48,28 @@ public class OlympicService {
     }
 
     public List<Sport> getSportsByDateAndSite(LocalDate date, UUID siteId) {
-        // Implementation needed for fetching sports by date and site
-        return null;
+        List<Sport> allSports = sportServiceClient.getAllSports();
+        return allSports.stream()
+                .filter(sport -> {
+                    List<Event> events = eventServiceClient.getAllEvents();
+                    return events.stream()
+                            .anyMatch(event -> event.getDate().equals(date)
+                                    && event.getSiteId().equals(siteId)
+                                    && event.getSportId().equals(sport.getId()));
+                })
+                .collect(Collectors.toList());
     }
 
     public List<Site> getSitesBySportAndDate(UUID sportId, LocalDate date) {
-        // Implementation needed for fetching sites by sport and date
-        return null;
+        List<Site> allSites = siteServiceClient.getAllSites();
+        return allSites.stream()
+                .filter(site -> {
+                    List<Event> events = eventServiceClient.getAllEvents();
+                    return events.stream()
+                            .anyMatch(event -> event.getDate().equals(date)
+                                    && event.getSiteId().equals(site.getId())
+                                    && event.getSportId().equals(sportId));
+                })
+                .collect(Collectors.toList());
     }
 }

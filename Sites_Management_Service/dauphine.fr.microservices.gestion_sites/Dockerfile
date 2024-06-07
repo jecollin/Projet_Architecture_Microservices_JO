@@ -1,18 +1,17 @@
-# Use a smaller, more secure base image like Alpine if compatible
-FROM openjdk:8-jdk-alpine
-
-# Set a working directory inside the container for better structure and management
+# Use a multi-stage build to minimize the final image size
+# Stage 1: Build the application
+FROM maven:3.6.3-openjdk-8 as builder
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Add a non-root user for running the application (improves security)
-RUN addgroup -S spring && adduser -S spring -G spring
-USER spring:spring
-
-# Copy only the artifact we need from the local machine to the container
-COPY target/gestion_sites.jar gestion_sites.jar
-
-# Expose the port the application runs on
-EXPOSE 8301
-
-# Specify the command to run the application
+# Stage 2: Create the runtime image
+FROM openjdk:8-jre-slim
+WORKDIR /app
+COPY --from=builder /app/target/gestion_sites.jar gestion_sites.jar
+EXPOSE 8082
 ENTRYPOINT ["java", "-jar", "gestion_sites.jar"]
+
+
+

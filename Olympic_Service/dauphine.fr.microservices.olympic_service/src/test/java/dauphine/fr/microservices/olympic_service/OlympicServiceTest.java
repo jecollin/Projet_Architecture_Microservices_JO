@@ -4,7 +4,6 @@ import dauphine.fr.microservices.gestion_event.entities.Event;
 import dauphine.fr.microservices.gestion_sites.entities.Site;
 import dauphine.fr.microservices.gestion_sports.entities.Sport;
 import dauphine.fr.microservices.gestion_users.entities.Planning;
-import dauphine.fr.microservices.olympic_service.controllers.OlympicRestController;
 import dauphine.fr.microservices.olympic_service.services.OlympicService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -117,6 +116,7 @@ public class OlympicServiceTest {
 	public void getSitesBySportAndDate_ShouldReturnSites() throws Exception {
 		LocalDate date = LocalDate.now();
 		UUID sportId = UUID.randomUUID();
+
 		given(olympicService.getSitesBySportAndDate(sportId, date)).willReturn(Arrays.asList(testSite));
 
 		mockMvc.perform(get("/olympic/sites/sport/{sportId}/date/{date}", sportId, date)
